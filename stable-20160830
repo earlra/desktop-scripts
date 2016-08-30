@@ -1,0 +1,68 @@
+#SingleInstance force
+; because I was getting annoying messages about a previous instance running..
+
+^d::
+; Control "d" opens my desktop the way I want it
+
+
+; My windows and accounts are jumbled, need to clarify which belongs to which, so try this:
+; from: https://autohotkey.com/board/topic/76706-help-simple-gmail-login/
+;#space::
+;Run https://mail.google.com/mail/?shva=1#inbox
+;WinWaitActive, Gmail: Email from Google
+;Sleep, 1000 	; fine tune sleep parameter as you need
+;Send,username@gmail.com{tab}password{enter}
+;return
+
+; first get my apps started opening
+
+; Open SLACK
+;run, C:\Users\randye\AppData\Local\slack\app-2.0.3\slack.exe
+
+sleep, 1000 ;pause just a bit between apps
+
+run, C:\Program Files (x86)\Notepad++\notepad++.exe
+sleep, 1000 ;pause just a bit between apps
+
+
+; TaskUnifier has been crapping out on me, so going back to Task Coach for a while
+;run, C:\Program Files\TaskUnifier\TaskUnifier.exe
+
+;Run Task Coach
+;also having problems, as of June 2016, need to completely re-install?
+run, C:\Program Files (x86)\TaskCoach\taskcoach.exe
+
+sleep, 1000 ;pause just a bit between apps
+
+run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe mail.google.com
+run, http://calendar.google.com
+run, https://app.mavenlink.com/login?from_redirect=true
+
+; no longer using web window for slack, using app above
+; run, https://atlanticbt.slack.com
+sleep, 1000 ;pause just a bit between apps
+
+; the "-new-window" below is so personal and ABT are separated
+run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe -new-window https://mail.google.com/mail/u/1
+
+sleep, 10000 ;pause makes sure the next URL loads in the new window
+run, https://www.google.com/calendar/render?pli=1&authuser=1
+run, https://drive.google.com/?tab=mo&authuser=1
+run, http://linkedin.com
+run, http://xpantech.net/kimai/
+
+WinMaximize ; maximize the windows
+
+return
+; BELOW IS FOR SETTING MY SCREEN RESOLUTION AFTER TAKING OUT OF THE DOCK
+
+^8::
+
+ChangeDisplaySettings( (ClrDep:=32) , (Wid:=1900) , (Hei:=600) , (Hz:=60) )
+
+ChangeDisplaySettings( cD, sW, sH, rR ) {
+  VarSetCapacity(dM,156,0), NumPut(156,2,&dM,36)
+  DllCall( "EnumDisplaySettings", UInt,0, UInt,-1, UInt,&dM ), NumPut(0x5c0000,dM,40)
+  NumPut(cD,dM,104),  NumPut(sW,dM,108),  NumPut(sH,dM,112),  NumPut(rR,dM,120)
+  Return DllCall( "ChangeDisplaySettings", UInt,&dM, UInt,0 )
+}
