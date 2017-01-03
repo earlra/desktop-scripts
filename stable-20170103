@@ -19,6 +19,7 @@
 ; Open SLACK
 ;run, C:\Users\randye\AppData\Local\slack\app-2.0.3\slack.exe
 
+run, C:\Program Files\Sublime Text 2\sublime_text.exe
 sleep, 1000 ;pause just a bit between apps
 
 run, C:\Program Files (x86)\Notepad++\notepad++.exe
@@ -42,6 +43,9 @@ run, https://app.mavenlink.com/login?from_redirect=true
 ; run, https://atlanticbt.slack.com
 sleep, 1000 ;pause just a bit between apps
 
+; for opening CherryTree note taking app
+run, C:\Program Files (x86)\CherryTree\bin\cherrytree.exe
+
 ; the "-new-window" below is so personal and ABT are separated
 run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe -new-window https://mail.google.com/mail/u/1
 
@@ -49,6 +53,7 @@ sleep, 10000 ;pause makes sure the next URL loads in the new window
 run, https://www.google.com/calendar/render?pli=1&authuser=1
 run, https://drive.google.com/?tab=mo&authuser=1
 run, http://linkedin.com
+run, http://twitter.com
 run, http://xpantech.net/kimai/
 
 WinMaximize ; maximize the windows
